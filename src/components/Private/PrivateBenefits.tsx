@@ -5,7 +5,7 @@ export default function PrivateBenefits() {
   const privates = wallSystems[1];
 
   return (
-    <div className="page bg-white w-[500px] h-[700px] p-8 flex flex-col justify-center text-[#353535] font-sans">
+    <div className="page bg-white w-full h-full p-8 flex flex-col justify-center text-[#353535] font-sans">
       <h2 className="text-2xl font-bold mb-4 text-[#ff5100]">{privates.title} Series</h2>
 
       <section className="mb-6">
