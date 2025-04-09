@@ -158,7 +158,7 @@ const CatalogComponent = () => {
             src={
               showAlt
                 ? "/images/closure-left.jpg"
-                : "/images/closure_open_left.png"
+                : "/images/Closure_open_left.png"
             }
             className="h-full transition-opacity duration-1000 ease-in-out "
           />
@@ -171,7 +171,7 @@ const CatalogComponent = () => {
             src={
               showAlt
                 ? "/images/closure-right.jpg"
-                : "/images/closure_open_right.png"
+                : "/images/Closure_open_right.png"
             }
             className="h-full transition-opacity duration-1000 ease-in-out "
           />
