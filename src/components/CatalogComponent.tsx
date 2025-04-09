@@ -262,7 +262,7 @@ const CatalogComponent = () => {
             alt="closure"
             src={
               showAlt
-                ? "/images/LivingRoom_Dinning_Left.jpg"
+                ? "/images/LivingRoom_Dinning_Right.jpg"
                 : "/images/LivingRoom_Dinning_Right_Open.jpg"
             }
             className="h-full transition-opacity duration-1000 ease-in-out "
