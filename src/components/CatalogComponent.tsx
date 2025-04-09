@@ -11,23 +11,10 @@ import ProcessPage2 from "./Process/ProcessPage2";
 
 const CatalogComponent = () => {
   const bookRef = useRef<any>(null);
-  const [isCoverOpen, setIsCoverOpen] = useState(false);
+  const [isCoverOpen, setIsCoverOpen] = useState(true);
   const [showAlt, setShowAlt] = useState(false);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [totalPages, setTotalPages] = useState(0);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isReversing, setIsReversing] = useState(false);
 
-  const handleVideoEnd = () => {
-    setIsReversing(true); // Hacemos que el video comience su retroceso (simulado)
-    setTimeout(() => {
-      if (videoRef.current) {
-        videoRef.current.currentTime = 0; // Reinicia el video
-        videoRef.current.play(); // Vuelve a reproducir el video
-        setIsReversing(false); // Terminamos la animación de retroceso
-      }
-    }, 1000); // Duración de la animación (1 segundo)
-  }
+  
 
 
   useEffect(() => {
@@ -38,7 +25,12 @@ const CatalogComponent = () => {
     return () => clearInterval(interval);
   }, []);
  
-
+ // Función para manejar el cambio de página
+ const handlePageChange = (e: any) => {
+  const currentPageIndex = e.data.pageIndex;
+  // Si estamos en la portada (página 0), activa el modo retrato
+  setIsCoverOpen(currentPageIndex === 1);
+};
 
  
 
@@ -63,9 +55,26 @@ const CatalogComponent = () => {
         showPageCorners={true}
         showCover={true}
         mobileScrollSupport={true}
+        style={{ borderRadius: "20px", overflow: "hidden" }}
+        startPage={0} // Página inicial
+        size="fixed" // Ajusta el tamaño al contenedor
+        minWidth={500} // Ancho mínimo
+        minHeight={500} // Altura mínima
+        maxWidth={800} // Ancho máximo
+        maxHeight={500} // Altura máxima
+        flippingTime={1000} // Tiempo de transición
+        usePortrait={false} // Modo retrato
+        startZIndex={0} // Z-index para la portada
+        autoSize={false} // Desactivar tamaño automático
+        maxShadowOpacity={1} // Opacidad máxima de la sombra
+        clickEventForward={true} // Habilitar clic para avanzar página
+        useMouseEvents={true} // Habilitar eventos de ratón
+        swipeDistance={30} // Distancia mínima para hacer un swipe
+        disableFlipByClick={false} // Desactivar el flip por clic
+        onFlip={handlePageChange}
       >
         {/* Portada */}
-        <div className="page bg-[#ff5100]  w-[500px] h-[700px] text-white text-3xl font-bold">
+        <div className="page bg-[#ff5100]  w-full h-[700px] text-white text-3xl font-bold">
           <div className="flex flex-col items-center justify-center w-full h-full">
             <Image
               src="https://tudelu.com/hubfs/logo-white.svg"
@@ -94,7 +103,6 @@ const CatalogComponent = () => {
             muted
             loop
             playsInline
-            onEnded={handleVideoEnd}
           />
         </div>
 
@@ -106,7 +114,6 @@ const CatalogComponent = () => {
             muted
             loop
             playsInline
-            onEnded={handleVideoEnd}
           />
         </div>
 
@@ -127,7 +134,6 @@ const CatalogComponent = () => {
             muted
             loop
             playsInline
-            onEnded={handleVideoEnd}
           />
         </div>
         <div className="page w-full h-[700px] bg-black overflow-hidden relative">
@@ -138,7 +144,6 @@ const CatalogComponent = () => {
             muted
             loop
             playsInline
-            onEnded={handleVideoEnd}
           />
         </div>
 
@@ -191,11 +196,6 @@ const CatalogComponent = () => {
             muted
             loop
             playsInline
-            onEnded={(e) => {
-              const videoElement = e.target as HTMLVideoElement;
-              videoElement.currentTime = 0; // Retrocede al inicio
-              videoElement.play(); // Reproduce el video de nuevo
-            }}
           />
         </div>
 
@@ -207,11 +207,6 @@ const CatalogComponent = () => {
             muted
             loop
             playsInline
-            onEnded={(e) => {
-              const videoElement = e.target as HTMLVideoElement;
-              videoElement.currentTime = 0; // Retrocede al inicio
-              videoElement.play(); // Reproduce el video de nuevo
-            }}
           />
         </div>
 
@@ -232,7 +227,6 @@ const CatalogComponent = () => {
             muted
             loop
             playsInline
-            onEnded={handleVideoEnd}
           />
         </div>
         <div className="page w-full h-[700px] bg-black overflow-hidden relative">
@@ -243,7 +237,6 @@ const CatalogComponent = () => {
             muted
             loop
             playsInline
-            onEnded={handleVideoEnd}
           />
         </div>
 
