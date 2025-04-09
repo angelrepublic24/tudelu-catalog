@@ -5,7 +5,7 @@ export default function Private() {
   const privates = wallSystems[1];
 
   return (
-    <div className="w-full bg-[#f2f2f2] px-4 md:px-8 py-16">
+    <div className="w-full h-full bg-[#f2f2f2] px-4 md:px-8 py-16">
       <div className="w-full md:w-1/2 mx-auto py-4">
         {/* Imágenes */}
         <div className="flex justify-center mb-4 w-full group relative">
